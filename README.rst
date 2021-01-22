@@ -12,22 +12,20 @@ What Is In The Box
 
 This repository contains a Python package, and the respective source code, to create (manually or automatically) type tokens for the various ROS data types.
 Type tokens contain attributes not only of the type itself but also of any related subtypes.
-For example:
+For example::
 
-```python
-from rostypes import HEADER
+    from rostypes import HEADER
 
-HEADER.type_name    # 'std_msgs/Header'
-HEADER.is_builtin   # True
-HEADER.is_primitive # False
-HEADER.is_message   # True
-HEADER.constants    # {}
-HEADER.fields       # {'seq': UINT32, 'stamp': TIME, 'frame_id': STRING}
+    HEADER.type_name    # 'std_msgs/Header'
+    HEADER.is_builtin   # True
+    HEADER.is_primitive # False
+    HEADER.is_message   # True
+    HEADER.constants    # {}
+    HEADER.fields       # {'seq': UINT32, 'stamp': TIME, 'frame_id': STRING}
 
-assert HEADER.fields['seq'].is_number
-assert HEADER.fields['stamp'].is_time
-assert HEADER.fields['frame_id'].is_string
-```
+    assert HEADER.fields['seq'].is_number
+    assert HEADER.fields['stamp'].is_time
+    assert HEADER.fields['frame_id'].is_string
 
 **********
 Installing
