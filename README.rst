@@ -12,7 +12,9 @@ What Is In The Box
 
 This repository contains a Python package, and the respective source code, to create (manually or automatically) type tokens for the various ROS data types.
 Type tokens contain attributes not only of the type itself but also of any related subtypes.
-For example::
+For example:
+
+.. code-block:: Python
 
     from rostypes import HEADER
 
