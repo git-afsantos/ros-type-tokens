@@ -8,4 +8,4 @@ from .constants import *
 from .values import *
 from .util import *
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
