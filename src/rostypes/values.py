@@ -14,6 +14,13 @@ from past.builtins import basestring
 
 from .constants import (BOOL, ROS_FLOAT_TYPES, ROS_INT_TYPES, STRING)
 
+if not hasattr(__builtins__, "long"): # Python 3
+    INT = int
+    FLOAT = (float, int)
+else: # Python 2
+    INT = (int, long)
+    FLOAT = (float, int, long)
+
 
 ###############################################################################
 # Value Wrappers
@@ -87,7 +94,7 @@ class RosInt(RosLiteral):
         if not type_token in ROS_INT_TYPES:
             raise ValueError("expected an int type: " + repr(type_token))
         if (value is True or value is False
-                or not isinstance(value, (int, long))):
+                or not isinstance(value, INT)):
             raise TypeError("expected an int value: " + repr(value))
         if value < type_token.min_value or value > type_token.max_value:
             raise ValueError("value out of range: " + repr(value))
@@ -114,7 +121,7 @@ class RosFloat(RosLiteral):
         if not type_token in ROS_FLOAT_TYPES:
             raise ValueError("expected a float type: " + repr(type_token))
         if (value is True or value is False
-                or not isinstance(value, (float, int, long))):
+                or not isinstance(value, FLOAT)):
             raise TypeError("expected a float value: " + repr(value))
         if value < type_token.min_value or value > type_token.max_value:
             raise ValueError("value out of range: " + repr(value))
